@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import java.util.Date;
 
 @Entity
-//@Table(name = "convention")
+
 public class Convention {
 
     @Id
@@ -26,20 +26,20 @@ public class Convention {
     @NonNull
     private Date dateEdition;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    //@Column(name = "date_signature1")
+
     private Date dateSignature1;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    //@Column(name = "date_signature2")
+
     private Date dateSignature2;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    //@Column(name = "date_signature3")
+
     private Date dateSignature3;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    //@Column(name = "date_signature4")
+
     private Date dateSignature4;
     @NonNull
     private String objet;
-    //@Column(name = "date_entree_vigueur")
+
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @NonNull
     private Date dateEntreevigueur;
