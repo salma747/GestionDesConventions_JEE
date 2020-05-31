@@ -1,4 +1,8 @@
 package tn.iit.jee.repository;
 
-public interface ConventionRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import tn.iit.jee.models.Convention;
+
+public interface ConventionRepository extends JpaRepository<Convention,Long> {
+
 }
