@@ -1,4 +1,9 @@
 package tn.iit.jee.repository;
 
-public interface UserRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import tn.iit.jee.models.User;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
 }

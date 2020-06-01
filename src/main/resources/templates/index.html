@@ -1,16 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
 <title>
     Gestion des Conventions
 </title>
-    <link rel="stylesheet" type="text/css"
-          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
 </head>
 <body>
-Gestion des Conventions
+<div align="center">
+    <h1>Gestion des Conventions</h1>
+    <a href="new-convention">Ajouter une nouvelle convention</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Objet</th>
+                <th>Participant 1</th>
+                <th>Date Signature 1</th>
+                <th>Participant 2</th>
+                <th>Date Signature 2</th>
+                <th>Participant 3</th>
+                <th>Date Signature 3</th>
+                <th>Participant 4</th>
+                <th>Date Signature 4</th>
+                <th>Date Edition</th>
+                <th>Date Entrée Vigueur</th>
+                <th>Date Expiration</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="convention : ${listConventions}">
+                <td th:text="${convention.id}">ID</td>
+                <td th:text="${convention.type}">Type</td>
+                <td th:text="${convention.objet}">Objet</td>
+                <td th:text="${convention.participant1}">Participant 1</td>
+                <td th:text="${convention.dateSignature1}">Date Signature 1</td>
+                <td th:text="${convention.participant2}">Participant 2</td>
+                <td th:text="${convention.dateSignature2}">Date Signature 2</td>
+                <td th:text="${convention.participant3}">Participant 3</td>
+                <td th:text="${convention.dateSignature3}">Date Signature 3</td>
+                <td th:text="${convention.participant4}">Participant 4</td>
+                <td th:text="${convention.dateSignature4}">Date Signature 4</td>
+                <td th:text="${convention.dateEdition}">Date Edition</td>
+                <td th:text="${convention.dateEntreevigueur}">Date Entrée Vigueur</td>
+                <td th:text="${convention.dateExpiration}">Date Expiration</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
 
