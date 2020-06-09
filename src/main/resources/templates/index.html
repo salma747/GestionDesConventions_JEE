@@ -47,6 +47,11 @@
                 <td th:text="${convention.dateEdition}">Date Edition</td>
                 <td th:text="${convention.dateEntreevigueur}">Date Entrée Vigueur</td>
                 <td th:text="${convention.dateExpiration}">Date Expiration</td>
+                <td>
+                    <a th:href="@{'/edit-convention/'+${convention.id}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete-convention/'+${convention.id}}">Delete</a>
+                </td>
             </tr>
         </tbody>
     </table>

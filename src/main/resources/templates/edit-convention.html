@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Ajouter Convention</title>
+    <title>Modifier Convention</title>
 </head>
 <body>
     <div align="center">
-        <h1>Créer une nouvelle convention</h1>
+        <h1>Modification de la convention</h1>
         <br/>
         <!--/*@thymesVar id="convention" type=""*/-->
         <form action="#" th:action="@{/save}" th:object="${convention}" method="post">
@@ -85,8 +85,8 @@
                </tr>
            </table>
             <button class="btn-danger pull-right" type="reset">Fermer</button>
-
-            <button class="btn-primary pull-left" type="submit">Ajouter Convention</button>
+            &nbsp;
+            <button class="btn-primary pull-left" type="submit">Modifier Convention</button>
         </form>
     </div>
 
