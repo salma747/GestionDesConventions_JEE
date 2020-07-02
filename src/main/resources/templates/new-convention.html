@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Ajouter Convention</title>
@@ -8,8 +8,7 @@
     <div align="center">
         <h1>Créer une nouvelle convention</h1>
         <br/>
-        <!--/*@thymesVar id="convention" type=""*/-->
-        <form action="#" th:action="@{/save}" th:object="${convention}" method="post">
+        <form action="#" method="post" th:action="@{/save-convention}" th:object="${convention}">
            <table border="0" cellpadding="10">
                <tr>
 <!--               <tr style="visibility: hidden">-->
@@ -67,26 +66,26 @@
 <!--                               th:text="${participant.getFullName()}"></option>-->
 <!--                   </select> </td>-->
 <!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Date Signature 4:</td>-->
-<!--                   <td><input id="dateSignature4" type="date" th:field="*{dateSignature4}"/></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Date D'Edition</td>-->
-<!--                   <td><input id="dateEdition" type="date" th:field="*{dateEdition}"/></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Date D'Entrée En Vigueur :</td>-->
-<!--                   <td><input id="dateEntrevigueur" type="date" th:field="*{dateEntrevigueur}"/></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Date D'Expiration</td>-->
-<!--                   <td><input  id="dateExpiration" type="date" th:field="*{dateExpiration}"/></td>-->
+               <tr>
+                   <td>Date Signature 4:</td>
+                   <td><input id="dateSignature4" type="date" th:field="*{dateSignature4}"/></td>
+               </tr>
+               <tr>
+                   <td>Date D'Edition</td>
+                   <td><input id="dateEdition" type="date" th:field="*{dateEdition}"/></td>
+               </tr>
+               <tr>
+                   <td>Date D'Entrée En Vigueur :</td>
+                   <td><input id="dateEntrevigueur" type="date" th:field="*{dateEntreevigueur}"/></td>
+               </tr>
+               <tr>
+                   <td>Date D'Expiration</td>
+                   <td><input  id="dateExpiration" type="date" th:field="*{dateExpiration}"/></td>
                </tr>
            </table>
-            <button class="btn-danger pull-right" type="reset">Fermer</button>
 
             <button class="btn-primary pull-left" type="submit">Ajouter Convention</button>
+            <button class="btn-danger pull-right" type="reset">Fermer</button>
         </form>
     </div>
 

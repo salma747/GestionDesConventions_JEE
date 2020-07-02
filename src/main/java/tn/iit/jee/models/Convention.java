@@ -42,12 +42,12 @@ public class Convention {
 
     @DateTimeFormat(pattern="yyyy-MM-dd")
     @NonNull
+    @Column(name = "date_entree_vigueur")
     private Date dateEntreevigueur;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date dateExpiration;
 
     public Convention() {
-
     }
 
     public long getId() {
