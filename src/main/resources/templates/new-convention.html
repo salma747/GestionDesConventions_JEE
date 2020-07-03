@@ -11,61 +11,61 @@
         <form action="#" method="post" th:action="@{/save-convention}" th:object="${convention}">
            <table border="0" cellpadding="10">
                <tr>
-<!--               <tr style="visibility: hidden">-->
-<!--                   <td>ID :</td>-->
-<!--                   <td><input type="text" readonly th:field="*{id}"/></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Type :</td>-->
-<!--                   <td><select required th:field="*{type}">-->
-<!--                       <option th:each="typeName : ${typeService.listAll()}" th:value="${typeName.getId()}"-->
-<!--                               th:text="${typeName.getName()}"></option>-->
-<!--                   </select></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Objet :</td>-->
-<!--                   <td><textarea required cols="100"  th:field="*{objet}"></textarea></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Participant 1</td>-->
-<!--                   <td><select required th:field="*{participant1}">-->
-<!--                       <option th:each="participant : ${participantService.listAll()}" th:value="${participant.getId()}"-->
-<!--                               th:text="${participant.getFullName()}"></option>-->
-<!--                   </select> </td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Date Signature 1:</td>-->
-<!--                   <td><input required id="dateSignature" type="date" th:field="*{dateSignature1}"/></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Participant 2</td>-->
-<!--                   <td><select required th:field="*{participant2}">-->
-<!--                       <option th:each="participant : ${participantService.listAll()}" th:value="${participant.getId()}"-->
-<!--                               th:text="${participant.getFullName()}"></option>-->
-<!--                   </select> </td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Date Signature 2:</td>-->
-<!--                   <td><input required id="dateSignature2" type="date" th:field="*{dateSignature2}"/></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Participant 3</td>-->
-<!--                   <td><select th:field="*{participant3}">-->
-<!--                       <option th:each="participant : ${participantService.listAll()}" th:value="${participant.getId()}"-->
-<!--                               th:text="${participant.getFullName()}"></option>-->
-<!--                   </select> </td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Date Signature 3:</td>-->
-<!--                   <td><input id="dateSignature3" type="date" th:field="*{dateSignature3}"/></td>-->
-<!--               </tr>-->
-<!--               <tr>-->
-<!--                   <td>Participant 4</td>-->
-<!--                   <td><select th:field="*{participant4}">-->
-<!--                       <option th:each="participant : ${participantService.listAll()}" th:value="${participant.getId()}"-->
-<!--                               th:text="${participant.getFullName()}"></option>-->
-<!--                   </select> </td>-->
-<!--               </tr>-->
+               <tr style="visibility: hidden">
+                   <td>ID :</td>
+                   <td><input type="text" readonly th:field="*{id}"/></td>
+               </tr>
+               <tr>
+                   <td>Type :</td>
+                   <td><select required th:field="*{type}">
+                       <option th:each="typeNom : ${typeService.listAll()}" th:value="${typeName.getId()}"
+                               th:text="${typeNom.getNom()}"></option>
+                   </select></td>
+               </tr>
+               <tr>
+                   <td>Objet :</td>
+                   <td><textarea required cols="100"  th:field="*{objet}"></textarea></td>
+               </tr>
+               <tr>
+                   <td>Participant 1</td>
+                   <td><select required th:field="*{participant1}">
+                       <option th:each="participant : ${participantService.listAll()}" th:value="${participant.getId()}"
+                               th:text="${participant.getNomComplet()}"></option>
+                   </select> </td>
+               </tr>
+               <tr>
+                   <td>Date Signature 1:</td>
+                   <td><input required id="dateSignature" type="date" th:field="*{dateSignature1}"/></td>
+               </tr>
+               <tr>
+                   <td>Participant 2</td>
+                   <td><select required th:field="*{participant2}">
+                       <option th:each="participant : ${participantService.listAll()}" th:value="${participant.getId()}"
+                               th:text="${participant.getNomComplet()}"></option>
+                   </select> </td>
+               </tr>
+               <tr>
+                   <td>Date Signature 2:</td>
+                   <td><input required id="dateSignature2" type="date" th:field="*{dateSignature2}"/></td>
+               </tr>
+               <tr>
+                   <td>Participant 3</td>
+                   <td><select th:field="*{participant3}">
+                       <option th:each="participant : ${participantService.listAll()}" th:value="${participant.getId()}"
+                               th:text="${participant.getNomComplet()}"></option>
+                   </select> </td>
+               </tr>
+               <tr>
+                   <td>Date Signature 3:</td>
+                   <td><input id="dateSignature3" type="date" th:field="*{dateSignature3}"/></td>
+               </tr>
+               <tr>
+                   <td>Participant 4</td>
+                   <td><select th:field="*{participant4}">
+                       <option th:each="participant : ${participantService.listAll()}" th:value="${participant.getId()}"
+                               th:text="${participant.getNomComplet()}"></option>
+                   </select> </td>
+               </tr>
                <tr>
                    <td>Date Signature 4:</td>
                    <td><input id="dateSignature4" type="date" th:field="*{dateSignature4}"/></td>

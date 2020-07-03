@@ -3,6 +3,7 @@ package tn.iit.jee.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "participant")
 public class Participant {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -37,5 +38,9 @@ public class Participant {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getNomComplet(){
+        return prenom + " " + nom;
     }
 }

@@ -12,16 +12,23 @@ import tn.iit.jee.models.Convention;
 import tn.iit.jee.models.Participant;
 import tn.iit.jee.services.ConventionService;
 import tn.iit.jee.services.ParticipantService;
+import tn.iit.jee.services.TypeService;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class AppController {
     @Autowired
     private ConventionService conventionService;
-
     @Autowired
     private ParticipantService participantService;
+    @Autowired
+    private TypeService typeService;
+    public static List<Convention> conventionList = new ArrayList<>();
+    private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 
     @RequestMapping("/")
     public String viewHomePage(Model model) {
@@ -36,6 +43,8 @@ public class AppController {
     public String showNewConventionForm(Model model) {
         Convention convention = new Convention();
         model.addAttribute("convention", convention);
+        model.addAttribute("participantService", participantService);
+        model.addAttribute("typeService", typeService);
         return "new-convention";
     }
 
@@ -71,6 +80,15 @@ public class AppController {
     public String saveParticipant(@ModelAttribute("participant") Participant participant) {
         participantService.save(participant);
         return "redirect:/";
+    }
+
+    @RequestMapping("/pdf")
+    public String pdfView(Model model) {
+        model.addAttribute("formatter", formatter);
+        model.addAttribute("participantService", participantService);
+        model.addAttribute("typeService", typeService);
+        model.addAttribute("conventionList", conventionList);
+        return "pdf";
     }
 
 }

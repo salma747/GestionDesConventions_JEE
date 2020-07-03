@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PDF</title>
+    <style>
+        .width-data{
+            width: 377.6px;
+            height: 20px;
+        }
+        .empty-data {
+            width: 1120px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body onload="printPDF()" align="center">
+<div th:if="${conventionList.size()==0}">
+    <h1>No conventions to print</h1>
+    <a href="/">Back Home</a>
+</div>
+<table th:if="${conventionList.size()!=0}" style="margin-bottom: 100px" width="100%"
+       th:each="convention : ${conventionList}">
+    <tr>
+        <td class="empty-data" colspan="7"></td>
+        <td class="width-data">Date Edition</td>
+    </tr>
+    <tr>
+        <td class="empty-data" colspan="7"></td>
+        <td class="width-data" th:text="${formatter.format(convention.getDateEdition())}"></td>
+    </tr>
+    <tr>
+        <th colspan="8">Convention</th>
+    </tr>
+    <tr>
+        <td class="width-data" th:text="${typeService.get(convention.getType()).getNom()}"></td>
+        <td class="empty-data" colspan="7"></td>
+    </tr>
+    <tr>
+        <td colspan="8" th:text="${convention.getObjet()}"></td>
+    </tr>
+    <tr>
+        <td colspan="8">
+            <br/>
+            <br/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="8">Participants</td>
+    </tr>
+    <tr>
+        <td colspan="2" th:text="${participantService.get(convention.participant1).getNomComplet()}"></td>
+        <td colspan="2" th:text="${participantService.get(convention.participant2).getNomComplet()}"></td>
+        <td colspan="2" th:if="${convention.participant3!=1}"
+            th:text="${participantService.get(convention.participant3).getNomComplet()}"></td>
+        <td colspan="2" th:if="${convention.participant4!=1}"
+            th:text="${participantService.get(convention.participant4).getNomComplet()}"></td>
+        <td colspan="2" th:if="${convention.participant3==1}"
+            ></td>
+        <td colspan="2" th:if="${convention.participant4==1}"
+           ></td>
+    </tr>
+    <tr>
+        <td colspan="2" th:text="${formatter.format(convention.getDateSignature1())}"></td>
+        <td colspan="2" th:text="${formatter.format(convention.getDateSignature2())}"></td>
+        <td colspan="2" th:if="${convention.participant3!=1}"
+            th:text="${formatter.format(convention.getDateSignature3())}"></td>
+        <td colspan="2" th:if="${convention.participant4!=1}"
+            th:text="${formatter.format(convention.getDateSignature4())}"></td>
+        <td colspan="2" th:if="${convention.participant3==1}"
+        ></td>
+        <td colspan="2" th:if="${convention.participant4==1}"
+        ></td>
+    </tr>
+    <tr>
+        <td colspan="8">
+            <br />
+            <br />
+        </td>
+    </tr>
+    <tr>
+        <td class="width-data">Date D'Entrée Vigueur</td>
+        <td colspan="6"></td>
+        <td class="width-data">Date D'Expiration</td>
+    </tr>
+    <tr>
+        <td class="width-data" th:text="${formatter.format(convention.getDateEntreevigueur())}"></td>
+        <td colspan="6"></td>
+        <td class="width-data" th:text="${formatter.format(convention.getDateExpiration())}"></td>
+    </tr>
+</table>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    function printPDF() {
+        window.print();
+    }
+</script>
+</body>
+</html>
