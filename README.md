@@ -33,9 +33,12 @@ Outils :
  * password : 
  
  Diagramme de Classes :
+
+![jee](/uploads/0e1c7cbe45608b0d390150f2d8a3a34d/jee.png)
              
  Screenshots : 
 
 L'application ressemble à des captures d'écran ci-dessous.
+
 
               
