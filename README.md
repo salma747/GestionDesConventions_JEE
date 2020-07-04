@@ -1,6 +1,6 @@
 # **Gestion des Conventions**
 
- Dans le cadre de ce mini projet, moi; Salma Ghariani, étudiante en 2ème année GLID de l’IIT, a réalisé la conception et la mise en place d’un système de gestion de ces conventions. 
+ Dans le cadre de ce mini projet, moi; Salma Ghariani, étudiante en 2ème année GLID de l’IIT, a réalisé la conception et la mise en place d’un système de gestion de ces conventions au sein de l'IIT. 
  
  Ainsi, ce système permet à l'administrateur d'ajouter, de modifier, de supprimer et de chercher une convention; ainsi de lister des conventions. 
  
