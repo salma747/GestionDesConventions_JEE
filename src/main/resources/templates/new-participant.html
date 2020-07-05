@@ -15,12 +15,13 @@
     </style>
 
     <title>Ajouter Participant</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
 </head>
 <body>
 <div align="center">
     <h1>Créer un nouveau participant</h1>
     <br/>
-    <form action="#" method="post" th:action="@{/save-participant}" th:object="${participant}">
+    <form action="/conventions" method="post" th:action="@{/save-participant}" th:object="${participant}">
         <table border="0" cellpadding="10">
             <tr>
             <tr style="visibility: hidden">
@@ -39,7 +40,7 @@
             </tr>
         </table>
         <button class="btn-primary" type="submit">Ajouter Participant</button>
-        <button class="btn-primary btn-danger" onclick="fermer()">Fermer</button>
+        <button class="btn-danger" onclick="fermer()">Fermer</button>
     </form>
 </div>
 

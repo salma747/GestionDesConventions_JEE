@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>PDF</title>
+    <link rel="shortcut icon" href="assets/images/gt_favicon.png">
     <style>
         .width-data{
             width: 377.6px;
@@ -58,10 +59,8 @@
             th:text="${participantService.get(convention.participant3).getNomComplet()}"></td>
         <td colspan="2" th:if="${convention.participant4!=1}"
             th:text="${participantService.get(convention.participant4).getNomComplet()}"></td>
-        <td colspan="2" th:if="${convention.participant3==1}"
-            ></td>
-        <td colspan="2" th:if="${convention.participant4==1}"
-           ></td>
+        <td colspan="2" th:if="${convention.participant3==1}"></td>
+        <td colspan="2" th:if="${convention.participant4==1}"></td>
     </tr>
     <tr>
         <td colspan="2" th:text="${formatter.format(convention.getDateSignature1())}"></td>
@@ -70,10 +69,8 @@
             th:text="${formatter.format(convention.getDateSignature3())}"></td>
         <td colspan="2" th:if="${convention.participant4!=1}"
             th:text="${formatter.format(convention.getDateSignature4())}"></td>
-        <td colspan="2" th:if="${convention.participant3==1}"
-        ></td>
-        <td colspan="2" th:if="${convention.participant4==1}"
-        ></td>
+        <td colspan="2" th:if="${convention.participant3==1}"></td>
+        <td colspan="2" th:if="${convention.participant4==1}"></td>
     </tr>
     <tr>
         <td colspan="8">
