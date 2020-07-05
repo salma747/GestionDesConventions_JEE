@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
+
+    <title>Inscription</title>
+</head>
+
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">Inscription et Authentification</a>
+        </div>
+    </div>
+</nav>
+
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <div th:if="${param.success}">
+                <div class="alert alert-info">Vous êtes inscrit avec succès !</div>
+            </div>
+
+            <h1>Inscription</h1>
+            <form th:action="@{/inscription}" th:object="${user}" method="post">
+
+                <p class="error-message" th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">Erreur de validation !!</p>
+
+                <div class="form-group" th:classappend="${#fields.hasErrors('prenom')}? 'has-error':''">
+                    <label for="prenom" class="control-label">Prénom</label> <input id="prenom" class="form-control" th:field="*{prenom}" />
+                    <p class="error-message" th:each="error: ${#fields.errors('prenom')}" th:text="${error}">Erreur de validation !!</p>
+                </div>
+                <div class="form-group" th:classappend="${#fields.hasErrors('nom')}? 'has-error':''">
+                    <label for="nom" class="control-label">Nom</label> <input id="nom" class="form-control" th:field="*{nom}" />
+                    <p class="error-message" th:each="error : ${#fields.errors('nom')}" th:text="${error}">Erreur de validation !!</p>
+                </div>
+                <div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error':''">
+                    <label for="email" class="control-label">E-mail</label> <input id="email" class="form-control" th:field="*{email}" />
+                    <p class="error-message" th:each="error : ${#fields.errors('email')}" th:text="${error}">Erreur de validation !!</p>
+                </div>
+                <div class="form-group" th:classappend="${#fields.hasErrors('mdp')}? 'has-error':''">
+                    <label for="mdp" class="control-label">Mot de passe</label> <input id="mdp" class="form-control" type="password" th:field="*{mdp}" />
+                    <p class="error-message" th:each="error : ${#fields.errors('mdp')}" th:text="${error}">Erreur de validation !!</p>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success">S'inscrire</button>
+                    <span>Déjà enregistré ? <a href="/" th:href="@{/login}">Connectez-vous ici</a></span>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" th:src="@{/webjars/jquery/3.2.1/jquery.min.js/}"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
+</body>
+</html>

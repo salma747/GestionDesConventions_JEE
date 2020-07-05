@@ -1,18 +1,20 @@
 package tn.iit.jee.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import tn.iit.jee.models.Convention;
 import tn.iit.jee.models.Participant;
+import tn.iit.jee.models.ResearchForm;
+import tn.iit.jee.models.User;
 import tn.iit.jee.services.ConventionService;
 import tn.iit.jee.services.ParticipantService;
 import tn.iit.jee.services.TypeService;
+import tn.iit.jee.services.UserService;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -29,14 +31,41 @@ public class AppController {
     private TypeService typeService;
     public static List<Convention> conventionList = new ArrayList<>();
     private DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/")
-    public String viewHomePage(Model model) {
-        List<Convention> listConventions = conventionService.listAll();
-        model.addAttribute("listConventions", listConventions);
+    public String home(){
+        return "home";
+    }
+    @RequestMapping("/about")
+    public String about(){
+        return "about";
+    }
+    @RequestMapping("/conventions")
+    public String viewHomePage(Model model, ResearchForm researchForm) {
+        if(researchForm.getObjet()==null)
+            researchForm.setObjet("");
+        if (researchForm.getType() == 0 && researchForm.getObjet().equals(""))  {
+            conventionList = conventionService.listAll();
+        } else if (researchForm.getType() != 0 && researchForm.getObjet().equals("") && researchForm.getType()!=0) {
+            conventionList = conventionService.getConventionsByType(researchForm.getType());
+        } else if (researchForm.getType() == 0) {
+            conventionList = conventionService.getConventionsByObjet(researchForm.getObjet());
+        }
+        else {
+            conventionList = conventionService.getConventionsByTypeAndObjet(researchForm.getType(),
+                    researchForm.getObjet());
+        }
+        model.addAttribute("conventionList", conventionList);
+        model.addAttribute("formatter", formatter);
         model.addAttribute("participantService", participantService);
-
-        return "index";
+        model.addAttribute("typeService", typeService);
+        model.addAttribute("researchForm", researchForm);
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = this.userService.findByEmail(auth.getName());
+        model.addAttribute("user", user);
+        return "conventions";
     }
 
     @RequestMapping("/new-convention")
@@ -58,7 +87,8 @@ public class AppController {
     public ModelAndView showUpdateConventionForm(@PathVariable(name = "id") Long id) {
         ModelAndView modelAndView = new ModelAndView("update-convention");
         Convention convention = conventionService.get(id);
-
+        modelAndView.addObject("participantService", participantService);
+        modelAndView.addObject("typeService", typeService);
        modelAndView.addObject("convention" , convention);
         return modelAndView;
     }
@@ -90,5 +120,13 @@ public class AppController {
         model.addAttribute("conventionList", conventionList);
         return "pdf";
     }
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+
+
 
 }

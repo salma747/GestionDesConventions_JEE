@@ -2,12 +2,36 @@
 <Diagram>
   <ID>JAVA</ID>
   <OriginalElement />
-  <nodes />
+  <nodes>
+    <node x="263.0" y="0.0">tn.iit.jee.models.User</node>
+    <node x="0.0" y="0.0">tn.iit.jee.models.Convention</node>
+    <node x="0.0" y="1020.0">tn.iit.jee.models.Participant</node>
+    <node x="524.0" y="0.0">tn.iit.jee.controller.AppController</node>
+    <node x="647.0" y="1020.0">tn.iit.jee.models.ResearchForm</node>
+    <node x="998.0" y="1336.0">tn.iit.jee.repository.ConventionRepository</node>
+    <node x="221.0" y="1020.0">tn.iit.jee.services.ConventionService</node>
+    <node x="885.0" y="125.0">tn.iit.jee.services.UserServiceImplementation</node>
+    <node x="1043.0" y="1020.0">tn.iit.jee.models.Type</node>
+    <node x="847.0" y="1020.0">tn.iit.jee.models.Role</node>
+    <node x="320.0" y="1336.0">tn.iit.jee.services.TypeService</node>
+    <node x="0.0" y="1336.0">tn.iit.jee.services.ParticipantService</node>
+    <node x="1023.5" y="0.0">tn.iit.jee.services.UserService</node>
+    <node x="575.0" y="1336.0">tn.iit.jee.controller.UserRegistrationController</node>
+  </nodes>
   <notes />
-  <edges />
-  <settings layout="Hierarchic Group" zoom="1.0" x="0.0" y="0.0" />
+  <edges>
+    <edge source="tn.iit.jee.services.UserServiceImplementation" target="tn.iit.jee.services.UserService">
+      <point x="0.0" y="-91.5" />
+      <point x="0.0" y="37.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.8" x="904.875" y="247.5" />
   <SelectedNodes />
-  <Categories />
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
   <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
 </Diagram>
 

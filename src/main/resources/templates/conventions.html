@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <meta charset="UTF-8">
+    <style>
+        .inline {
+            display: inline-block;
+            margin-right: 5px;
+            color: black;
+
+
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f5f5;
+            font-family: sans-serif;
+            font-weight: 100;
+        }
+
+
+        table {
+            background: linear-gradient(45deg, rgba(48, 171, 183, 0.9), #3329a4) !important;
+            width: 95%;
+            border-collapse: collapse;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        th {
+            text-align: left;
+        }
+
+        thead {
+
+        th {
+            background-color: #55608f;
+        }
+
+        }
+
+        tbody {
+
+        tr {
+
+        &
+        :hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        }
+        td {
+            position: relative;
+
+        &
+        :hover {
+
+        &
+        :before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -9999px;
+            bottom: -9999px;
+            background-color: rgba(255, 255, 255, 0.2);
+            z-index: -1;
+        }
+
+        }
+        }
+        }
+        .material-icons {
+            width: 25px;
+            height: 25px;
+            color: black;
+        }
+    </style>
+    <title>
+        Gestion des Conventions
+    </title>
+</head>
+<body>
+<br align="center">
+<div class="text-center">
+    <h1>Gestion des Conventions</h1>
+    <a href="new-convention" style="margin-right: 20px">Ajouter une nouvelle convention</a>
+    <a href="new-participant">Ajouter un nouveau participant</a>
+    <div>
+        <br/><button onclick="toPdf()"><i class="material-icons">print</i></button>
+    </div>
+</div>
+<br/>
+<table border="1" cellpadding="10" align="center">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Objet</th>
+        <th>Participants</th>
+        <th>Date D'Edition</th>
+        <th>Date D'Entrée En Vigueur</th>
+        <th>Date D'Expiration</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="convention : ${conventionList}">
+        <td th:text="${convention.id}">ID</td>
+        <td th:text="${convention.type}">Type</td>
+        <td th:text="${convention.objet}">Objet</td>
+        <td>
+            <div th:if="${convention.participant1!=1}">
+                <div th:text="${participantService.get(convention.participant1).getNomComplet()}"></div>
+                <div th:text="${formatter.format(convention.getDateSignature1())}"></div>
+            </div>
+            <div th:if="${convention.participant2!=1}">
+                <div th:text="${participantService.get(convention.participant2).getNomComplet()}"></div>
+                <div th:text="${formatter.format(convention.getDateSignature2())}"></div>
+            </div>
+            <div th:if="${convention.participant3!=1}">
+                <div th:text="${participantService.get(convention.participant3).getNomComplet()}"></div>
+                <div th:text="${formatter.format(convention.getDateSignature3())}"></div>
+            </div>
+            <div th:if="${convention.participant4!=1}">
+                <div th:text="${participantService.get(convention.participant4).getNomComplet()}"></div>
+                <div th:text="${formatter.format(convention.getDateSignature4())}"></div>
+            </div>
+
+        </td>
+        <td th:text="${formatter.format(convention.dateEdition)}">Date D'Edition</td>
+        <td th:text="${formatter.format(convention.dateEntreevigueur)}">Date D'Entrée En Vigueur</td>
+        <td th:text="${formatter.format(convention.dateExpiration)}">Date D'Expiration</td>
+        <td>
+            <div>
+                <a th:href="@{'/update-convention/'+${convention.id}}"><i class="material-icons">edit</i></a>
+                <a class="inline" th:href="@{'/delete-convention/'+${convention.id}}"><i
+                        class="material-icons">delete</i></a>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>
+
+</body>
+<script>
+    function toPdf() {
+        window.location.href = "/pdf";
+    }
+</script>
+</html>
+

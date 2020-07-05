@@ -2,7 +2,7 @@ package tn.iit.jee.models;
 
 public class ResearchForm {
     private long type;
-    private String date_expiration;
+    private String objet;
 
     public ResearchForm() {
     }
@@ -15,11 +15,19 @@ public class ResearchForm {
         this.type = type;
     }
 
-    public String getDate_expiration() {
-        return date_expiration;
+    public String getObjet() {
+        return objet;
     }
 
-    public void setDate_expiration(String date_expiration) {
-        this.date_expiration = date_expiration;
+    public void setObjet(String objet) {
+        this.objet = objet;
+    }
+
+    @Override
+    public String toString() {
+        return "ResearchForm{" +
+                "type=" + type +
+                ", objet='" + objet + '\'' +
+                '}';
     }
 }

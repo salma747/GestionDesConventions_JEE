@@ -24,4 +24,13 @@ public class ConventionService {
     public void delete(Long id){
         conventionRepository.deleteById(id);
     }
+    public List<Convention>  getConventionsByType(long type){
+        return conventionRepository.findByType(type);
+    }
+    public List<Convention>  getConventionsByObjet(String objet){
+        return conventionRepository.findByObjet(objet);
+    }
+    public List<Convention>  getConventionsByTypeAndObjet(long type,String objet){
+        return conventionRepository.findByTypeAndObjet(type,objet);
+    }
 }

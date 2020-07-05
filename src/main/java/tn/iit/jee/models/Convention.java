@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import java.util.Date;
 
 @Entity
-
+@Table(name = "convention")
 public class Convention {
 
     @Id

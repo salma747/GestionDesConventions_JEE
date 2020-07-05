@@ -18,14 +18,15 @@
 </head>
 <body onload="printPDF()" align="center">
 <div th:if="${conventionList.size()==0}">
-    <h1>No conventions to print</h1>
-    <a href="/">Back Home</a>
+    <h1>Pas de convention à imprimer</h1>
+    <a href="/">Retour à la page d'acceuil</a>
 </div>
 <table th:if="${conventionList.size()!=0}" style="margin-bottom: 100px" width="100%"
        th:each="convention : ${conventionList}">
+    <img th:src="@{/images/iit.png}" width="80" height="50" class="img-rounded pull-right">
     <tr>
         <td class="empty-data" colspan="7"></td>
-        <td class="width-data">Date Edition</td>
+        <td class="width-data">Date D'Edition</td>
     </tr>
     <tr>
         <td class="empty-data" colspan="7"></td>
@@ -76,12 +77,12 @@
     </tr>
     <tr>
         <td colspan="8">
-            <br />
-            <br />
+            <br/>
+            <br/>
         </td>
     </tr>
     <tr>
-        <td class="width-data">Date D'Entrée Vigueur</td>
+        <td class="width-data">Date D'Entrée En Vigueur</td>
         <td colspan="6"></td>
         <td class="width-data">Date D'Expiration</td>
     </tr>
