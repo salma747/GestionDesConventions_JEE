@@ -42,7 +42,7 @@ L'application ressemble à des captures d'écran ci-dessous.
 
 ![insc](/uploads/8cc488704674aa52f2342ea6c139e9a3/insc.png)
 ![insc-succ](/uploads/bbf0d5c5f01e029c82d2609219f7ae67/insc-succ.png)
-![conn](/uploads/6de0f14c1425b72155d30456541584a0/conn.png)
+![conn](/uploads/40e7f83750c7b0596dbab6fbf2f808a7/conn.png)
 ![home](/uploads/11f42701616cbe44c20d7355e2679dca/home.png)
 ![about](/uploads/2d3388d6454ec8a5057dc19e9685f904/about.png)
 ![contact](/uploads/a9bbe8793df143ac179fdcfc8367c54e/contact.png)
