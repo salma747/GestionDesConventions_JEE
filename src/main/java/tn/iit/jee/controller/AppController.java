@@ -35,25 +35,26 @@ public class AppController {
     private UserService userService;
 
     @RequestMapping("/")
-    public String home(){
+    public String home() {
         return "home";
     }
+
     @RequestMapping("/about")
-    public String about(){
+    public String about() {
         return "about";
     }
+
     @RequestMapping("/conventions")
     public String viewHomePage(Model model, ResearchForm researchForm) {
-        if(researchForm.getObjet()==null)
+        if (researchForm.getObjet() == null)
             researchForm.setObjet("");
-        if (researchForm.getType() == 0 && researchForm.getObjet().equals(""))  {
+        if (researchForm.getType() == 0 && researchForm.getObjet().equals("")) {
             conventionList = conventionService.listAll();
-        } else if (researchForm.getType() != 0 && researchForm.getObjet().equals("") && researchForm.getType()!=0) {
+        } else if (researchForm.getType() != 0 && researchForm.getObjet().equals("") && researchForm.getType() != 0) {
             conventionList = conventionService.getConventionsByType(researchForm.getType());
         } else if (researchForm.getType() == 0) {
             conventionList = conventionService.getConventionsByObjet(researchForm.getObjet());
-        }
-        else {
+        } else {
             conventionList = conventionService.getConventionsByTypeAndObjet(researchForm.getType(),
                     researchForm.getObjet());
         }
@@ -80,7 +81,7 @@ public class AppController {
     @RequestMapping(value = "/save-convention", method = RequestMethod.POST)
     public String saveConvention(@ModelAttribute("convention") Convention convention) {
         conventionService.save(convention);
-        return "redirect:/";
+        return "redirect:/conventions";
     }
 
     @RequestMapping("/update-convention/{id}")
@@ -89,7 +90,7 @@ public class AppController {
         Convention convention = conventionService.get(id);
         modelAndView.addObject("participantService", participantService);
         modelAndView.addObject("typeService", typeService);
-       modelAndView.addObject("convention" , convention);
+        modelAndView.addObject("convention", convention);
         return modelAndView;
     }
 
@@ -125,8 +126,6 @@ public class AppController {
     public String login(Model model) {
         return "login";
     }
-
-
 
 
 }
