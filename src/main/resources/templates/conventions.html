@@ -99,6 +99,18 @@
     <h1>Gestion des Conventions</h1>
     <a href="new-convention" style="margin-right: 20px">Ajouter une nouvelle convention</a>
     <a href="new-participant">Ajouter un nouveau participant</a>
+    <br/>
+    <br/>
+    <form style="margin-bottom: 10px" th:object="${researchForm}" th:action="@{/conventions}" method="get">
+        <select id="type" name="type" th:field="*{type}">
+            <option selected th:text="None" th:value="0"></option>
+            <option th:each="type : ${typeService.listAll()}" th:value="${type.getId()}"
+                    th:text="${type.getNom()}"></option>
+        </select> &nbsp;&nbsp;&nbsp;&nbsp;
+        <input th:field="*{objet}" id="date_expiration" name="objet" type="text"/> &nbsp;&nbsp;&nbsp;&nbsp;
+        <button style="height: 30px" class="btn btn-info" type="submit">Search</button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a style="color: red" href="/conventions">Clear</a>
+    </form>
     <div>
         <br/><button onclick="toPdf()"><i class="material-icons">print</i></button>
     </div>
@@ -120,7 +132,7 @@
     <tbody>
     <tr th:each="convention : ${conventionList}">
         <td th:text="${convention.id}">ID</td>
-        <td th:text="${convention.type}">Type</td>
+        <td th:text="${typeService.get(convention.type).getNom()}">Type</td>
         <td th:text="${convention.objet}">Objet</td>
         <td>
             <div th:if="${convention.participant1!=1}">

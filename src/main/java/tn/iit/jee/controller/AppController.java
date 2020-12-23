@@ -46,13 +46,13 @@ public class AppController {
 
     @RequestMapping("/conventions")
     public String viewHomePage(Model model, ResearchForm researchForm) {
-        if (researchForm.getObjet() == null)
+        if(researchForm.getObjet()==null)
             researchForm.setObjet("");
         if (researchForm.getType() == 0 && researchForm.getObjet().equals("")) {
             conventionList = conventionService.listAll();
-        } else if (researchForm.getType() != 0 && researchForm.getObjet().equals("") && researchForm.getType() != 0) {
+        } else if (researchForm.getType() != 0 && researchForm.getObjet().equals("")) {
             conventionList = conventionService.getConventionsByType(researchForm.getType());
-        } else if (researchForm.getType() == 0) {
+        } else if (researchForm.getType() == 0 && !researchForm.getObjet().equals("")) {
             conventionList = conventionService.getConventionsByObjet(researchForm.getObjet());
         } else {
             conventionList = conventionService.getConventionsByTypeAndObjet(researchForm.getType(),
